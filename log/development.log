@@ -1,0 +1,21 @@
+  [1m[35mSQL (0.2ms)[0m  [1m[35mSET search_path TO public /*application='Myapp'*/[0m
+  [1m[35m (387.0ms)[0m  [1m[35mCREATE DATABASE "myapp_development" ENCODING = 'unicode' /*application='Myapp'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mSET search_path TO public /*application='Myapp'*/[0m
+  [1m[35m (250.4ms)[0m  [1m[35mCREATE DATABASE "myapp_test" ENCODING = 'unicode' /*application='Myapp'*/[0m
+Started GET "/" for ::1 at 2025-02-01 15:18:09 -0500
+  [1m[35m (23.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY) /*application='Myapp'*/[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='Myapp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Myapp'*/[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/gabrielshufelt/.rvm/rubies/ruby-3.3.4/lib/ruby/gems/3.3.0/gems/railties-8.0.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/gabrielshufelt/.rvm/rubies/ruby-3.3.4/lib/ruby/gems/3.3.0/gems/railties-8.0.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.6ms | GC: 0.0ms)
+Completed 200 OK in 122ms (Views: 8.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.1ms)
+
+
+Started GET "/" for ::1 at 2025-02-01 15:18:12 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/gabrielshufelt/.rvm/rubies/ruby-3.3.4/lib/ruby/gems/3.3.0/gems/railties-8.0.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/gabrielshufelt/.rvm/rubies/ruby-3.3.4/lib/ruby/gems/3.3.0/gems/railties-8.0.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.2ms | GC: 0.0ms)
+Completed 200 OK in 49ms (Views: 0.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
