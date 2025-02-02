@@ -2,10 +2,37 @@ require 'net/http'
 require 'json'
 
 class JobRecordsController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:parse_job_details]
+  skip_before_action :verify_authenticity_token, only: [:parse_job_details, :create]
 
   def index
-    @job_records = JobRecord.all
+    email = params[:email]
+    @job_records = JobRecord.find_by(email:)
+  end
+
+  def create
+    title = params[:title]
+    company = params[:company]
+    description = params[:description]
+    url = params[:url]
+    raw_html = params[:raw_html]
+    email = params[:email]
+
+    @job_record = JobRecord.new(
+      title:,
+      company:,
+      description:,
+      date_applied: Date.today,
+      url:,
+      status: 'applied',
+      raw_html:,
+      user_id: User.find_by(email:).id
+    )
+
+    if @job_record.save!
+      render json: @job_record, status: :created
+    else
+      render json: @job_record.errors, status: :unprocessable_entity, status: 420
+    end
   end
 
   def parse_job_details

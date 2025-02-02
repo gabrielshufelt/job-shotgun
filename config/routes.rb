@@ -11,4 +11,5 @@ Rails.application.routes.draw do
 
   get 'jobs', to: 'job_records#index'
   post 'jobs/parse_job_details', to: 'job_records#parse_job_details'
+  post 'jobs/create', to: 'job_records#create'
 end
