@@ -6,7 +6,14 @@ class JobRecordsController < ApplicationController
 
   def index
     email = params[:email]
-    @job_records = JobRecord.find_by(email:)
+    user = User.find_by(email: email)
+    if user
+      # @job_records = [user.first_name]
+      @job_records = JobRecord.where(user_id: user.id).order(:date_applied)
+      render json: @job_records
+    else
+      render json: { error: "User not found" }, status: :not_found
+    end
   end
 
   def create
