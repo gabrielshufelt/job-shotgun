@@ -12,6 +12,7 @@ class JobRecordsController < ApplicationController
     url = params[:url]
     page_content = params[:page_content]
     raw_html = params[:raw_html]
+    email = params[:email]
 
     prompt = <<~PROMPT
       Extract the job title, company name, and job description from the following webpage content.
@@ -38,14 +39,15 @@ class JobRecordsController < ApplicationController
                            date_applied: Date.today,
                            url:,
                            status: 'applied',
-                           raw_html:
+                           raw_html:,
+                           user_id: User.find_by(email:).id
                          })
       @job_record = JobRecord.new(job_details)
 
       if @job_record.save!
         render json: @job_record, status: :created
       else
-        render json: @job_record.errors, status: :unprocessable_entity
+        render json: @job_record.errors, status: :unprocessable_entity, status: 420
       end
     else
       render json: { error: 'Failed to get response from AI service' }, status: :unprocessable_entity
